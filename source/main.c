@@ -1,3 +1,10 @@
+/**
+ * @file main.c
+ * @author rick <rick@gnous.eu>
+ * date 2021
+ * @licence GPL3
+ */
+
 #include <citro2d.h>
 #include <stdlib.h>
 #include <stdio.h>
