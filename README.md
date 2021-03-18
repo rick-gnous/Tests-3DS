@@ -2,7 +2,7 @@
 
 Makefile récupéré des fichiers exemples de Devkitpro.
 
-Programme affichant un sprite basique.
+Programme affichant un sprite basique et de le déplacer.
 
 Le code est aussi documenté que possible mais certaines bibliothèques ne donnent aucune information sur les fonctions.
 

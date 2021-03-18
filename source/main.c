@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define SCREEN_HEIGH 240
+#define SCREEN_WIDTH 400
+
 typedef struct
 {
   C2D_Sprite spr;
@@ -51,6 +54,31 @@ int main(int argc, char *argv[])
 
   while (aptMainLoop())
   {
+    /* on capte le boutons pressé */
+    hidScanInput();
+
+    /* on récupère le bouton qui est maintenu
+     * pour déplacer le sprite */
+    u32 bouton_presse = hidKeysHeld(); 
+
+    /* hidKeysHeld retourne l’ensemble des touches pressées.
+     * ces opérations bit à bit sont nécessaires pour extraire la touche voulue.*/
+    if (bouton_presse & KEY_DOWN)
+      /* on récupère la position du sprite (lire la doc pour + d’infos) */
+      if (m_blue.spr.params.pos.y != SCREEN_HEIGH)
+        /* permet de déplacer le sprite en mettant à jour son x et son y
+         * on indique la vitesse de x et y après en pixel/frame (je suppose) */
+        C2D_SpriteMove(&m_blue.spr, 0, 5);
+    if (bouton_presse & KEY_UP)
+      if (m_blue.spr.params.pos.y != 0)
+        C2D_SpriteMove(&m_blue.spr, 0, -1);
+    if (bouton_presse & KEY_LEFT)
+      if (m_blue.spr.params.pos.x != 0)
+        C2D_SpriteMove(&m_blue.spr, -1, 0);
+    if (bouton_presse & KEY_RIGHT)
+      if (m_blue.spr.params.pos.x != SCREEN_WIDTH)
+        C2D_SpriteMove(&m_blue.spr, 1, 0);
+
     /* attend que la frame précédente soit afficher avant de rendre la suivante */
     C3D_FrameBegin(C3D_FRAME_SYNCDRAW);
     /* nettoye l’écran avec la couleur passée en paramètre */
