@@ -2,7 +2,7 @@
 
 Makefile récupéré des fichiers exemples de Devkitpro.
 
-Programme affichant un sprite basique et de le déplacer.
+Programme affichant un sprite basique et de le déplacer. Il affiche aussi un bouton sur l’écran tactile pour faire tourner le sprite.
 
 Le code est aussi documenté que possible mais certaines bibliothèques ne donnent aucune information sur les fonctions.
 
